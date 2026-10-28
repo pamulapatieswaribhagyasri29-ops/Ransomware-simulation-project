@@ -1,23 +1,44 @@
 import streamlit as st
-import os
 import hashlib
+import json
 
 st.title("Ransomware Detection System")
-st.write("Upload test files to check for suspicious changes.")
+st.write("Safely detect new or modified files by comparing hashes.")
 
-uploaded_files = st.file_uploader(
-    "Choose test files",
-    accept_multiple_files=True
+baseline_file = st.file_uploader(
+    "Upload baseline.json",
+    type=["json"],
+    key="baseline"
+)
+
+test_files = st.file_uploader(
+    "Upload files to scan",
+    accept_multiple_files=True,
+    key="tests"
 )
 
 if st.button("Scan Files"):
-    if not uploaded_files:
+    if baseline_file is None:
+        st.error("Please upload baseline.json first.")
+    elif not test_files:
         st.warning("Please upload at least one test file.")
     else:
-        for file in uploaded_files:
-            data = file.getvalue()
-            file_hash = hashlib.sha256(data).hexdigest()
-            st.write(f"File: {file.name}")
-            st.write(f"SHA-256: {file_hash}")
+        try:
+            baseline = json.load(baseline_file)
+            if not isinstance(baseline, dict):
+                raise ValueError("Baseline must be a JSON object.")
 
-        st.success("Scan completed.")
+            for file in test_files:
+                digest = hashlib.sha256(file.getvalue()).hexdigest()
+                old_digest = baseline.get(file.name)
+
+                if old_digest is None:
+                    st.warning(f"New file: {file.name}")
+                elif old_digest != digest:
+                    st.error(f"Modified file: {file.name}")
+                else:
+                    st.success(f"No change: {file.name}")
+
+            st.info("Scan completed.")
+        except (json.JSONDecodeError, ValueError) as error:
+            st.error(f"Could not read baseline.json: {error}")
