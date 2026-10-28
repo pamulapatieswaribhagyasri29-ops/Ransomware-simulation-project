@@ -1,0 +1,17 @@
+Ransomware Attack Simulation Mini Project
+
+Objective:
+To demonstrate ransomware-like behavior safely.
+
+Test files:
+
+1. myfile.txt
+2. sample2.txt
+
+Result:
+The simulation program identified the sample files.
+No files were encrypted, modified, or deleted.
+Both sample files remained readable.
+
+Conclusion:
+The project demonstrates a safe ransomware simulation concept.

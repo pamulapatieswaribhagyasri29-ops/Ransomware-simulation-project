@@ -1,0 +1,46 @@
+RANSOMWARE ATTACK SIMULATION MINI PROJECT
+
+1. Introduction
+
+Ransomware is a type of malicious software that can prevent users from accessing their files, commonly by encrypting them and demanding a ransom. This project demonstrates the basic concept of ransomware behavior through a safe Python simulation.
+
+2. Objective
+
+- To understand the basic concept of ransomware.
+- To demonstrate ransomware-related behavior safely.
+- To learn how Python can identify files.
+- To understand the importance of data protection and backups.
+
+3. Tools Used
+
+- Python
+- Windows operating system
+- Notepad
+- Command Prompt
+- Sample text files
+
+4. Implementation
+
+A Python program named simulate.py was created. Two sample files, myfile.txt and sample2.txt, were placed in a dedicated simulation folder. The program identifies these files and displays a simulated ransomware warning.
+
+5. Testing and Results
+
+The program was executed using the command "python simulate.py". It identified the sample files and displayed the message "Simulation complete." Both sample files were checked afterward and remained readable and unchanged.
+
+6. Conclusion
+
+The project demonstrates the basic concept of ransomware behavior in a controlled environment. It helped explain why ransomware is dangerous and why cybersecurity measures are important. Regular backups, updated security software, and caution with suspicious files can help reduce risk.
+
+This project is an educational simulation only. It does not encrypt files or perform an actual ransomware attack.
+
+7. Future Scope
+
+- Add file-change monitoring.
+- Develop a ransomware detection alert.
+- Demonstrate backup and recovery.
+- Add a graphical user interface.
+- Test defensive techniques in an isolated lab.
+
+8. Final Result
+
+The safe simulation executed successfully, identified both sample files, and left their contents unchanged.
